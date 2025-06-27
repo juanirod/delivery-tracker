@@ -6,8 +6,9 @@ import { OrdersModule } from './orders/orders.module';
 import { EventsModule } from './events/events.module';
 import { DeliveriesModule } from './deliveries/deliveries.module';
 import { DriversModule } from './drivers/drivers.module';
+import { NotificationsModule } from './notifications/notifications.module';
 @Module({
-  imports: [EventEmitterModule.forRoot(), OrdersModule, EventsModule, DeliveriesModule, DriversModule],
+  imports: [EventEmitterModule.forRoot(), OrdersModule, EventsModule, DeliveriesModule, DriversModule, NotificationsModule],
   controllers: [AppController],
   providers: [AppService],
 })

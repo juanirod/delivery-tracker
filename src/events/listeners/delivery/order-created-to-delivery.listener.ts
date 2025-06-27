@@ -5,12 +5,14 @@ import { Order } from "src/orders/entities/order.entity";
 
 @Injectable()
 export class OrderCreatedToDeliveryListener {
-    constructor(private readonly deliveriesService: DeliveriesService) { }
+    constructor(
+        private readonly deliveriesService: DeliveriesService, 
+    ) { }
 
     @OnEvent('order.created')
     handle(event: Order) {
-        console.log(`🚚 Asignando conductor para pedido ${event.id} de ${event.customerName}`);
+        console.log(`🚚 Asignando rider para pedido ${event.id} de ${event.customerName}`);
         this.deliveriesService.assignDriver(event);
-
+        
     }
 }

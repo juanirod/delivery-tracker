@@ -21,7 +21,7 @@ export class DeliveriesService {
         const delivery = new Delivery(
             uuidv4(),
             order.id,
-            driver?.id ?? null,
+            driver ?? null,
             driver ? 'assigned' : 'pending_driver',
         );
         this.deliveries.push(delivery);
@@ -53,11 +53,9 @@ export class DeliveriesService {
 
         delivery.status = 'delivered';
         this.eventEmitter.emit('delivery.delivered', delivery);
-        this.driversService.markAsAvailable(delivery.driverId!);
+        this.driversService.markAsAvailable(delivery.driver?.id!);
 
-        this.eventEmitter.emit('driver.available', {
-            driverId: delivery.driverId,
-        });
+        this.eventEmitter.emit('driver.available', delivery.driver);
 
         return delivery;
     }

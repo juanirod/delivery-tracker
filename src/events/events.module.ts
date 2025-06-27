@@ -7,9 +7,10 @@ import { DeliveryAssignedListener } from './listeners/delivery/delivery-assigned
 import { DeliveryPendingListener } from './listeners/delivery/delivery-pending.listener';
 import { DeliveryPickedUpListener } from './listeners/delivery/delivery-pickedup.listener';
 import { DeliveryCompletedListener } from './listeners/delivery/delivery-completed.liestener';
+import { NotificationsModule } from 'src/notifications/notifications.module';
 
 @Module({
-  imports: [DeliveriesModule], // 👈 necesario
+  imports: [DeliveriesModule, NotificationsModule], // 👈 necesario
   providers: [
     OrderCreatedListener,
     OrderCreatedToDeliveryListener,
